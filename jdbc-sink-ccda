@@ -1,0 +1,30 @@
+{
+  "name": "jdbc-sink-ccda",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "table.name.format": "cdw_dqm_ccda",
+    "connection.password": "chsuat_datamart",
+    "tasks.max": "1",
+    "topics": "v1.chsuat_minervadb.ccdaMessage",
+    "transforms": "Flatten",
+    "transforms.Flatten.delimiter": ".",
+    "transforms.Flatten.type": "org.apache.kafka.connect.transforms.Flatten$Value",
+    "auto.evolve": "true",
+    "connection.user": "chsuat_datamart",
+    "value.converter.schemas.enable": "true",
+    "name": "jdbc-sink-ccda",
+    "auto.create": "true",
+    "connection.url": "jdbc:mysql://10.15.10.68:3307/chsuat_datamartdb",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "insert.mode": "upsert",
+    "pk.mode": "record_value",
+    "pk.fields": "_id"
+  },
+  "tasks": [
+    {
+      "connector": "jdbc-sink-ccda",
+      "task": 0
+    }
+  ],
+  "type": "sink"
+}
