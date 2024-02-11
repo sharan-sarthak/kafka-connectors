@@ -1,0 +1,25 @@
+{
+  "name": "bigquery-sink-hl7Message",
+  "config": {
+    "connector.class": "com.wepay.kafka.connect.bigquery.BigQuerySinkConnector",
+    "autoUpdateSchemas": "true",
+    "sanitizeTopics": "true",
+    "autoCreateTables": "true",
+    "tasks.max": "1",
+    "topics": "v1.chsuat_minervadb.hl7Message",
+    "schemaRegistryLocation": "http://localhost:8081",
+    "project": "prj-cdw-d-clndata-f116",
+    "datasets": "prj-cdw-d-clndata-f116.DQM_test",
+    "defaultDataset": "prj-cdw-d-clndata-f116.DQM_test",
+    "keyfile": "/tmp/keyFile/keyfile.json",
+    "name": "bigquery-sink-hl7Message",
+    "schemaRetriever": "com.wepay.kafka.connect.bigquery.retrieve.IdentitySchemaRetriever"
+  },
+  "tasks": [
+    {
+      "connector": "bigquery-sink-hl7Message",
+      "task": 0
+    }
+  ],
+  "type": "sink"
+}
