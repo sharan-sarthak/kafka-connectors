@@ -1,0 +1,28 @@
+{
+  "name": "mongo-source",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSourceConnector",
+    "offset.partition.name": "mongodb_new_v2",
+    "tasks.max": "1",
+    "batch.size": "0",
+    "change.stream.full.document": "updateLookup",
+    "pipeline": "[{\"$match\": {\"ns.coll\": {\"$in\": [\"patient\", \"encounter\", \"practitioner\", \"practitionerRole\", \"location\", \"organization\", \"condition\", \"allergyIntolerance\", \"medication\", \"medicationRequest\", \"diagnosticReport\", \"observation\", \"coverage\", \"immunization\", \"procedure\", \"account\", \"goal\", \"clinicalImpression\", \"documentReference\", \"relatedPerson\", \"familyMemberHistory\",\"appointment\",\"diagnosticOrder\"]}}},{\"$project\": { \"operationType\":1, \"fullDocument.dateTimeZone\":1, \"ns\":1, \"documentKey\":1} } ]",
+    "topic.prefix": "",
+    "database": "chsuat_minervadb",
+    "output.json.formatter": "com.mongodb.kafka.connect.source.json.formatter.SimplifiedJson",
+    "poll.await.time.ms": "5000",
+    "name": "mongo-source",
+    "connection.uri": "mongodb://root:password@10.15.10.68:27018",
+    "errors.tolerance": "all",
+    "collation": "",
+    "topic.suffix": "new",
+    "poll.max.batch.size": "1000"
+  },
+  "tasks": [
+    {
+      "connector": "mongo-source",
+      "task": 0
+    }
+  ],
+  "type": "source"
+}
