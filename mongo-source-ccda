@@ -1,0 +1,32 @@
+{
+  "name": "mongo-source-ccda",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSourceConnector",
+    "publish.full.document.only": "true",
+    "output.schema.infer.value": "true",
+    "offset.partition.name": "kafkaMongoConnector_distributed",
+    "output.format.value": "schema",
+    "tasks.max": "1",
+    "batch.size": "0",
+    "change.stream.full.document": "updateLookup",
+    "output.format.key": "schema",
+    "pipeline": "[{\"$match\":{\"ns.coll\":{\"$in\":[\"ccdaMessage\"]}}},{\"$project\":{\"operationType\":1,\"fullDocument._id\":1,\"fullDocument.documentDetails.documentId\":1, \"fullDocument.documentDetails.messageId\":1,\"fullDocument.documentDetails.effectiveTime\":1,\"fullDocument.documentDetails.locationCode\":1,\"fullDocument.exceptionMsg\":1, \"fullDocument.status\":1,\"fullDocument.processedDate\":1,\"fullDocument.dateCreated\":1,\"fullDocument.lastUpdated\":1,\"fullDocument.lockDate\":1,\"fullDocument.filePath\":1,\"ns\":1,\"documentKey\":1} } ]",
+    "topic.prefix": "v1",
+    "database": "chsuat_minervadb",
+    "output.json.formatter": "com.mongodb.kafka.connect.source.json.formatter.SimplifiedJson",
+    "poll.await.time.ms": "5000",
+    "name": "mongo-source-ccda",
+    "connection.uri": "mongodb://root:password@10.15.10.68:27018",
+    "errors.tolerance": "all",
+    "collation": "",
+    "topic.suffix": "",
+    "poll.max.batch.size": "1000"
+  },
+  "tasks": [
+    {
+      "connector": "mongo-source-ccda",
+      "task": 0
+    }
+  ],
+  "type": "source"
+}
