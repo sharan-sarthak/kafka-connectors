@@ -1,0 +1,32 @@
+{
+  "name": "mongo-source-hl7Message",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSourceConnector",
+    "publish.full.document.only": "true",
+    "output.schema.infer.value": "true",
+    "offset.partition.name": "kafkaMongoConnector_distributed",
+    "output.format.value": "schema",
+    "tasks.max": "1",
+    "batch.size": "0",
+    "change.stream.full.document": "updateLookup",
+    "output.format.key": "schema",
+    "pipeline": "[{\"$match\":{\"ns.coll\":{\"$in\":[\"hl7Message\"]}}},{\"$project\":{\"operationType\":1,\"fullDocument._id\":1,\"fullDocument.dateCreated\":1,\"fullDocument.receivedDate\":1,\"fullDocument.lockDate\":1,\"fullDocument.processedDate\":1,\"fullDocument.sendingFacility\":1,\"fullDocument.exceptionMsg\":1,\"fullDocument.processed\":1,\"fullDocument.patientId\":1,\"fullDocument.messageType\":1,\"fullDocument.eventType\":1,\"fullDocument.patientVisitNumber\":1,\"fullDocument.jobInstanceNumber\":1,\"fullDocument.messageId\":1,\"ns\":1,\"documentKey\":1} } ]",
+    "topic.prefix": "v1",
+    "database": "chsuat_minervadb",
+    "output.json.formatter": "com.mongodb.kafka.connect.source.json.formatter.SimplifiedJson",
+    "poll.await.time.ms": "5000",
+    "name": "mongo-source-hl7Message",
+    "connection.uri": "mongodb://root:password@10.15.10.68:27018",
+    "errors.tolerance": "all",
+    "collation": "",
+    "topic.suffix": "",
+    "poll.max.batch.size": "1000"
+  },
+  "tasks": [
+    {
+      "connector": "mongo-source-hl7Message",
+      "task": 0
+    }
+  ],
+  "type": "source"
+}
