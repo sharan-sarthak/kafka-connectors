@@ -1,0 +1,31 @@
+{
+  "name": "gbq-sink-integrationAuditLog",
+  "config": {
+    "connector.class": "com.wepay.kafka.connect.bigquery.BigQuerySinkConnector",
+    "autoUpdateSchemas": "true",
+    "keySource": "JSON",
+    "autoCreateTables": "true",
+    "sanitizeTopics": "true",
+    "topics": "v1.chsuat_minervadb.integrationAuditLog",
+    "allowSchemaUnionization": "true",
+    "allowBigQueryRequiredFieldRelaxation": "true",
+    "transforms": "Flatten",
+    "project": "prj-cdw-d-clndata-f116",
+    "transforms.Flatten.delimiter": "_",
+    "defaultDataset": "cdw_data_quality_management",
+    "transforms.Flatten.type": "org.apache.kafka.connect.transforms.Flatten$Value",
+    "key.converter.schemas.enable": "false",
+    "allowNewBigQueryFields": "true",
+    "keyfile": "{\n\"type\": \"service_account\",\n\"project_id\": \"prj-cdw-d-clndata-f116\",\n\"private_key_id\": \"d19eda90602eea811808d29819f528e8355e857f\",\n\"private_key\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDBHIQob7yXSNvl\\nJn1kdTf5kjFuT27p73bajg012cCuRLWLkMn1D18D0UULF2HP0AvE8RgAoHXoRtaT\\nzWRHi/dqXru4Q9G3i7Eo/tXTEyhrM8vvT2YFoMFIAAOx2A5C4wHS/E1rPYWSJzP+\\ntUgY8v/QWO4cFDQDLAlkiTu10q27q/Y4QP6ODJD1QTK9zZYF3dGUBsVjXjY5XEQX\\nhGR12rTL/3uzCs+657NLe/6wnZGs/2kXITTPiNfSnOT3oOlwn5udd+dzPrv/EJun\\njmbYO6KJ4MVd42YqLxvM6GYUXcd2euDJT7ucaOB4maukKrw+jU0jNV/hfELE9upb\\n9Wb9dA1tAgMBAAECggEAKHQx10q5BjQ0JIfworfPlw+iHUq0oHsSuewiJlLMg3VP\\nVsJpHFYxAFq5jP5D9kXOAV7EOXVj3dnhH6taQ4a1uOnJh2tlpn60CTOBVatgvzxl\\nj2dhpvIrK0sdewcYzbhCbJGAImQL9DcUNFqDlP5qypmmn+k3kCaMfSwmfwt4a6TY\\nN70b12Oy6eoTaZQbVdkExSZZEXFvDRUokILbQHwRN95kbJm4+deZO+cHCi5QGsXI\\nO3iXC/cVpX8qpTQoKk/Yn5vxa4ClCW6jIXxFVEegOlUTbqPCzDg5WpE7jherubA5\\nBM4B7NSE41als6ItU6UQ6ZjJehRJ2HH+1dtd2Fd0/QKBgQDpJmFNZLbRNwT9klYx\\nqLNAhM6VpLQRwNTg+ekUf4rl0Viuf1hAoww8t9ibFwyjwOlxq0WEUP43IdQEG5is\\nLd34RTVrf29oskiuuQk5znPEpwWFwnNKACMzJoB4wOBvjBUTNZIKsdHMCa6eqA+v\\nTarwh3cPEPS7asN64ppdObdcBwKBgQDUCZat9q44xGOHBDSZ78dC+5UUgYNK0T7q\\nB8hBVjlmmKboceGhiviWfY5DcvrH+YN1p4ynvRk+ne+3ecSZ2fF8keLOwP8bUjtb\\nQwAw/+rgLjOxp8wMbURvTSu29w3NcFZszOlBNQ5/j51LHDeshbuyY6jtNOPeToMu\\nlh+ncjoV6wKBgE13GhdL4k5LOJZD2+2t/rjuJ3GjAs1vQ4vonR/ZbL4FO7Dm0NzR\\nD8zQzOBi3Sk/fJDu9i8Ldhu9WqNuw+BZcQn/fMtV0R95NRsQkdcqGF77m6Mgw4uP\\n1iI1pbP5adjGM25pezegc3OWt/UxI9z8MlKuv8k6ugXXaFHZHq7g8WJbAoGAXaUe\\ndxZLO6cAjdC9qn7LcjnKTZQleBWRw6pMNw7tqvIgROiGzeGiiFRLUF6ng0ofVQb6\\nh9psG8uE43NT8N7gWDPWB5oVEOvwaw3cN8fO49OD4SJKa/KWFtHuTJAv+Ft0z/hv\\ny+yyyoOS5GlB7V/i1ZZONPT27meeaCTFNh6sqKECgYEAoC2h4d/jhr+sz8Ewhb3H\\nTwE0bx+tq3T57TzogCZqLcnhU54Z/KalKHIA/O8ewTNrBguraBJOFFPQ1fmFbvZ1\\n4vqQ22SHq75GYIbOXjcXGs4gMcdH8C3l+xJGKXM1VvYEaZ6PG9C67+fEixr28gju\\nvcMTq5HDJN+pYAm9hHB4sq4=\\n-----END PRIVATE KEY-----\\n\",\n\"client_email\": \"sa-d-minerva-bigquery@prj-cdw-d-clndata-f116.iam.gserviceaccount.com\",\n\"client_id\": \"110619614442579134663\",\n\"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",\n\"token_uri\": \"https://oauth2.googleapis.com/token\",\n\"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\",\n\"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/sa-d-minerva-bigquery%40prj-cdw-d-clndata-f116.iam.gserviceaccount.com\" \n}",
+    "name": "gbq-sink-integrationAuditLog",
+    "value.converter.schemas.enable": "true",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter"
+  },
+  "tasks": [
+    {
+      "connector": "gbq-sink-integrationAuditLog",
+      "task": 0
+    }
+  ],
+  "type": "sink"
+}
