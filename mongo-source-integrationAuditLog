@@ -1,0 +1,33 @@
+{
+  "name": "mongo-source-integrationAuditLog",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSourceConnector",
+    "publish.full.document.only": "true",
+    "output.schema.infer.value": "true",
+    "offset.partition.name": "kafkaMongoConnector_distributed",
+    "output.format.value": "schema",
+    "tasks.max": "1",
+    "batch.size": "0",
+    "change.stream.full.document": "updateLookup",
+    "output.format.key": "schema",
+    "pipeline": "[{\"$match\":{\"ns.coll\":{\"$in\":[\"integrationAuditLog\"]}}},{\"$project\":{\"operationType\":1,\"fullDocument._id\":1,\"fullDocument.messageId\":1,\"fullDocument.messageType\":1,\"fullDocument.responseCode\":1,\"fullDocument.processingStartDateTime\":1,\"fullDocument.dateUpdated\":1,\"fullDocument.additionalInfo\":1,\"fullDocument.reason\":1,\"ns\":1,\"documentKey\":1} } ]",
+    "topic.prefix": "",
+    "database": "chsuat_minervadb",
+    "topic.namespace.map": "{\"chsuat_minervadb.integrationAuditLog\": \"mirthProcessingMetaData\"}",
+    "output.json.formatter": "com.mongodb.kafka.connect.source.json.formatter.SimplifiedJson",
+    "poll.await.time.ms": "5000",
+    "name": "mongo-source-integrationAuditLog",
+    "connection.uri": "mongodb://root:password@10.15.10.68:27018",
+    "errors.tolerance": "all",
+    "collation": "",
+    "topic.suffix": "",
+    "poll.max.batch.size": "1000"
+  },
+  "tasks": [
+    {
+      "connector": "mongo-source-integrationAuditLog",
+      "task": 0
+    }
+  ],
+  "type": "source"
+}
