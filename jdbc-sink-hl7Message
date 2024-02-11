@@ -1,0 +1,30 @@
+{
+  "name": "jdbc-sink-hl7Message",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "table.name.format": "cdw_dqm_hl7Message",
+    "connection.password": "chsuat_datamart",
+    "tasks.max": "1",
+    "topics": "v1.chsuat_minervadb.hl7Message",
+    "transforms": "Flatten",
+    "transforms.Flatten.delimiter": ".",
+    "transforms.Flatten.type": "org.apache.kafka.connect.transforms.Flatten$Value",
+    "auto.evolve": "true",
+    "connection.user": "chsuat_datamart",
+    "value.converter.schemas.enable": "true",
+    "name": "jdbc-sink-hl7Message",
+    "auto.create": "true",
+    "connection.url": "jdbc:mysql://10.15.10.68:3307/chsuat_datamartdb",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "insert.mode": "upsert",
+    "pk.mode": "record_value",
+    "pk.fields": "_id"
+  },
+  "tasks": [
+    {
+      "connector": "jdbc-sink-hl7Message",
+      "task": 0
+    }
+  ],
+  "type": "sink"
+}
