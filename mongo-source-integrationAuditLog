@@ -7,7 +7,7 @@
     "offset.partition.name": "kafkaMongoConnector_distributed",
     "output.format.value": "schema",
     "tasks.max": "1",
-    "batch.size": "0",
+    "batch.size": "0", 
     "change.stream.full.document": "updateLookup",
     "output.format.key": "schema",
     "pipeline": "[{\"$match\":{\"ns.coll\":{\"$in\":[\"integrationAuditLog\"]}}},{\"$project\":{\"operationType\":1,\"fullDocument._id\":1,\"fullDocument.messageId\":1,\"fullDocument.messageType\":1,\"fullDocument.responseCode\":1,\"fullDocument.processingStartDateTime\":1,\"fullDocument.dateUpdated\":1,\"fullDocument.additionalInfo\":1,\"fullDocument.reason\":1,\"ns\":1,\"documentKey\":1} } ]",
